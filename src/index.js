@@ -33,6 +33,10 @@ var blanketNode = function (userOptions,cli){
         oldLoader = require.extensions['.js'],
         newLoader;
 
+    if(blanketConfigs&&process.env&&process.env.BLANKET_PATTERN) {
+        blanketConfigs.pattern = process.env.BLANKET_PATTERN;
+    }
+
     function escapeRegExp(str) {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
